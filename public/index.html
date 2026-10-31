@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d1117">
+  <meta name="description" content="A thoughtful AI chat, powered by Groq.">
+  <title>Still — AI chat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="Still home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span>still</span>
+      </a>
+      <button class="new-chat" id="new-chat" type="button"><span class="plus">+</span> New conversation <span class="shortcut">⌘ K</span></button>
+      <div class="history-heading"><span>Your space</span><button id="clear-chat" class="icon-button" type="button" aria-label="Clear conversation" title="Clear conversation">⌫</button></div>
+      <button class="history-item active" id="current-chat" type="button"><span class="history-dot"></span><span id="history-title">A fresh start</span></button>
+      <div class="sidebar-bottom">
+        <div class="model-card"><span class="model-indicator"></span><div><div class="model-label">Running on</div><div class="model-name" id="model-name">Groq · Llama</div></div><span class="model-chevron">⌄</span></div>
+        <div class="privacy-note"><span class="lock-icon">♢</span> Your conversations stay in this browser.</div>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <button class="mobile-menu icon-button" id="mobile-menu" type="button" aria-label="Open menu">☰</button>
+        <div class="topbar-title">Personal assistant <span class="topbar-dot">·</span> <span class="topbar-subtitle">A little space to think</span></div>
+        <button class="avatar" type="button" aria-label="You">Y</button>
+      </header>
+
+      <section class="conversation" id="conversation" aria-live="polite">
+        <div class="welcome" id="welcome">
+          <div class="welcome-mark"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span></div>
+          <div class="eyebrow"><span class="eyebrow-line"></span> A CLEARER KIND OF CONVERSATION <span class="eyebrow-line"></span></div>
+          <h1>Good things start<br>with a <em>question.</em></h1>
+          <p>Bring a thought, a task, or a half-formed idea.<br>We can work through it together.</p>
+          <div class="suggestions">
+            <button class="suggestion" type="button" data-prompt="Help me make a plan for a more focused week"><span class="suggestion-icon icon-sun">✳</span><span><b>Find your focus</b><small>Plan a more intentional week</small></span><span class="suggestion-arrow">↗</span></button>
+            <button class="suggestion" type="button" data-prompt="Explain a complex idea in simple terms"><span class="suggestion-icon icon-spark">✧</span><span><b>Make sense of something</b><small>Big ideas, made simple</small></span><span class="suggestion-arrow">↗</span></button>
+            <button class="suggestion" type="button" data-prompt="Help me brainstorm a fresh idea for a project"><span class="suggestion-icon icon-bulb">⌁</span><span><b>Think out loud</b><small>Explore a new idea together</small></span><span class="suggestion-arrow">↗</span></button>
+          </div>
+        </div>
+        <div class="message-list" id="message-list"></div>
+      </section>
+
+      <footer class="composer-area">
+        <div class="composer-wrap">
+          <form class="composer" id="chat-form">
+            <textarea id="message-input" rows="1" maxlength="20000" placeholder="Ask anything, or just start somewhere…" aria-label="Message" required></textarea>
+            <div class="composer-tools"><div class="composer-actions"><button class="search-toggle" id="search-toggle" type="button" aria-pressed="false" hidden>Search web</button><span class="input-hint">Thoughtful answers take a moment.</span></div><button class="send-button" id="send-button" type="submit" aria-label="Send message"><span>↑</span></button></div>
+          </form>
+          <div class="composer-caption"><span>AI can make mistakes. Take what helps, leave what doesn’t.</span><span id="context-note">Context · rolling window</span></div>
+        </div>
+      </footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>
